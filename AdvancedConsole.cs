@@ -18,7 +18,7 @@ namespace AdvancedConsole
             {
                 while(true)
                 {
-                    m_historyColors.Pop();
+                    m_historyColors.Pop().Apply();
                 }
             } catch(Exception)
             {
