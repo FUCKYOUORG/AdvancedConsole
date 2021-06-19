@@ -29,7 +29,16 @@ namespace AdvancedConsoleUnitTest
                     inR = "Changed! (LOL)";
                 })
                 .Outf("Again, now inR = {0}\n", inR)
-                .Out("Bye!");
+                .Out("[Press Z or Enter]Bye! ")
+                .WaitForKeys(ConsoleKey.Z, ConsoleKey.Enter)
+                .EndLine()
+                .Out("Press any key...")
+                .WaitForKey((c, k) =>
+                {
+
+                })
+                .Out("\nFor testing, press Q please.")
+                .WaitForKey(ConsoleKey.Q);
         }
     }
 }
