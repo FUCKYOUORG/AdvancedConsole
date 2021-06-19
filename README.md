@@ -34,3 +34,8 @@ namespace AdvancedConsoleUnitTest
     }
 }
 ```
+one method that not include in the example code is:
+```C#
+public AdvancedConsole AdvancedConsole.AdvancedConsole.MoveCursorTo(int x, int y);
+```
+That `int x` will set to the `System.Console.CursorLeft` and `int y` will set to the `System.Console.CursorTop`, then it will return `this`.
