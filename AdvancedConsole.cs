@@ -12,6 +12,20 @@ namespace AdvancedConsole
         {
             m_historyColors = new Stack<ConsoleColors>();
         }
+        ~AdvancedConsole()
+        {
+            try
+            {
+                while(true)
+                {
+                    m_historyColors.Pop();
+                }
+            } catch(Exception)
+            {
+                //
+            }
+        }
+
         public AdvancedConsole SetBackground(ConsoleColor back)
         {
             m_historyColors.Push(new ConsoleColors());
@@ -97,6 +111,22 @@ namespace AdvancedConsole
         public AdvancedConsole WaitForKey(KeyEventHandler handler)
         {
             handler(this, Console.ReadKey(true));
+            return this;
+        }
+        public AdvancedConsole WaitForKeys(params ConsoleKey[] keys)
+        {
+            bool jmp_out = false;
+            while(!jmp_out)
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                foreach(ConsoleKey k in keys)
+                {
+                    if(k == keyInfo.Key)
+                    {
+                        jmp_out = true;
+                    }
+                }
+            }
             return this;
         }
         public AdvancedConsole MoveCursorTo(int x, int y)
